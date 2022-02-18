@@ -16,4 +16,8 @@ pub fn main() void {
     print("{}:{s}\n", .{ cd, @typeName(@TypeOf(cd)) });
 
     print("4.2 / 3.14 = {}\n", .{4.2 / 3.14});
+
+    // this code breaks compiler by some reason...
+    // const big_number: i65535 = 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263;
+    // print("big_number = {}\n", .{big_number});
 }
