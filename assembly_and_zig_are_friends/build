@@ -1,0 +1,7 @@
+#!/bin/sh
+
+zig \
+	build-exe -target arm-linux-musleabi \
+	-isystem .    `# include current directory to libs path `\
+	-lc           `# link to libc `\
+	main.zig f.s `# sources `
