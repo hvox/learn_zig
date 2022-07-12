@@ -1,12 +1,3 @@
-//
-// Quiz time! Let's see if you can fix this whole program.
-//
-// You'll have to think about this one a bit.
-//
-// Let the compiler tell you what's wrong.
-//
-// Start at the top.
-//
 const std = @import("std");
 
 pub fn main() void {
@@ -17,9 +8,7 @@ pub fn main() void {
     // The exact size of usize depends on the target CPU
     // architecture. We could have used a u8 here, but usize is
     // the idiomatic type to use for array indexing.
-    //
-    // There IS a problem on this line, but 'usize' isn't it.
-    const x: usize = 1;
+    var x: usize = 1;
 
     // Note: When you want to declare memory (an array in this
     // case) without putting anything in it, you can set it to
@@ -33,10 +22,10 @@ pub fn main() void {
     lang[0] = letters[x];
 
     x = 3;
-    lang[???] = letters[x];
+    lang[1] = letters[x];
 
-    x = ???;
-    lang[2] = letters[???];
+    x = 5;
+    lang[2] = letters[x];
 
     // We want to "Program in Zig!" of course:
     std.debug.print("Program in {s}!\n", .{lang});
