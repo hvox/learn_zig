@@ -20,11 +20,9 @@ pub fn main() void {
     std.debug.print("Answer to the Ultimate Question: {}\n", .{answer});
 }
 
-// Please define the deepThought() function below.
-//
 // We're just missing a couple things. One thing we're NOT missing is the
 // keyword "pub", which is not needed here. Can you guess why?
-//
-??? deepThought() ??? {
+// That's because we are not going to use deepThought() outside of this module.
+fn deepThought() u8 {
     return 42; // Number courtesy Douglas Adams
 }
