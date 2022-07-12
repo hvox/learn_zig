@@ -28,24 +28,12 @@
 //     u32 can hold 0 to 4,294,967,295
 //     i64 can hold −9,223,372,036,854,775,808 to 9,223,372,036,854,775,807
 //
-// Please fix this program so that the types can hold the desired values
-// and the errors go away!
-//
 const std = @import("std");
 
 pub fn main() void {
-    const n: u8 = 50;
+    var n: u8 = 50;
     n = n + 5;
-
-    const pi: u8 = 314159;
-
-    const negative_eleven: u8 = -11;
-
-    // There are no errors in the next line, just explanation:
-    // Perhaps you noticed before that the print function takes two
-    // parameters. Now it will make more sense: the first parameter
-    // is a string. The string may contain placeholders '{}', and the
-    // second parameter is an "anonymous list literal" (don't worry
-    // about this for now!) with the values to be printed.
+    const pi: u19 = 314159;
+    const negative_eleven: i8 = -11;
     std.debug.print("{} {} {}\n", .{ n, pi, negative_eleven });
 }
