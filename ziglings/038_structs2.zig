@@ -33,15 +33,18 @@ pub fn main() void {
         .experience = 10,
     };
 
-    // Please add "Zump the Loud" with the following properties:
-    //
-    //     class      bard
-    //     gold       10
-    //     health     100
-    //     experience 20
-    //
+    // Zump the Loud
+    chars[1] = Character{
+        .class = Class.bard,
+        .gold = 10,
+        .health = 100,
+        .experience = 20,
+    };
+
     // Feel free to run this program without adding Zump. What does
     // it do and why?
+    // It prints some random numbers instead of the Zump characteristics.
+    // That's because we have defined but not initialized chars[1].
 
     // Printing all RPG characters in a loop:
     for (chars) |c, num| {
