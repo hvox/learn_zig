@@ -17,8 +17,7 @@
 //     bar        a pointer to the value at foo
 //     bar.*      the value 5 (the dereferenced value "at" bar)
 //
-// We'll see why pointers are useful in a moment. For now, see if you
-// can make this example work!
+// We'll see why pointers are useful in a moment.
 //
 const std = @import("std");
 
@@ -28,9 +27,8 @@ pub fn main() void {
 
     var num2: u8 = undefined;
 
-    // Please make num2 equal 5 using num1_pointer!
-    // (See the "cheatsheet" above for ideas.)
-    num2 = ???;
+    // Make num2 equal 5 using num1_pointer.
+    num2 = num1_pointer.*;
 
     std.debug.print("num1: {}, num2: {}\n", .{ num1, num2 });
 }
