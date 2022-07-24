@@ -55,9 +55,8 @@ pub fn main() void {
         .experience = 20,
     };
 
-    // FIX ME!
-    // Please pass our Character "glorp" to printCharacter():
-    printCharacter(???);
+    // Pass our Character "glorp" to printCharacter():
+    printCharacter(&glorp);
 }
 
 // Note how this function's "c" parameter is a pointer to a Character struct.
