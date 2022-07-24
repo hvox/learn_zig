@@ -1,5 +1,5 @@
 //
-// Help! Evil alien creatures have hidden eggs all over the Earth
+// help! evil alien creatures have hidden eggs all over the earth
 // and they're starting to hatch!
 //
 // Before you jump into battle, you'll need to know four things:
@@ -84,7 +84,7 @@ pub fn main() void {
         for (aliens) |*alien| {
 
             // *** Zap the Alien Here! ***
-            ???.zap(heat_ray_strength);
+            alien.zap(heat_ray_strength);
 
             // If the alien's health is still above 0, it's still alive.
             if (alien.health > 0) aliens_alive += 1;
