@@ -30,9 +30,7 @@ pub fn main() void {
     // (or a slice of const u8 values, as we saw above). So, we could
     // treat a "many-item pointer" of const u8 as a string as long as
     // we can CONVERT IT TO A SLICE. (Hint: we do know the length!)
-    //
-    // Please fix this line so the print statement below can print it:
-    const zen12_string: []const u8 = zen_manyptr;
+    const zen12_string: []const u8 = zen_manyptr[0..21];
 
     // Here's the moment of truth!
     std.debug.print("{s}\n", .{zen12_string});
