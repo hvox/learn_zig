@@ -34,8 +34,6 @@
 // a neat way of keeping track, but for now, we'll just have to
 // do it manually.
 //
-// Let's see if we can get this program working!
-//
 const std = @import("std");
 
 // We've just started writing a simple ecosystem simulation.
@@ -49,7 +47,7 @@ const Insect = union {
 
 // Since we need to specify the type of insect, we'll use an
 // enum (remember those?).
-const AntOrBee = enum { a, b };
+const AntOrBee = enum { ant, bee };
 
 pub fn main() void {
     // We'll just make one bee and one ant to test them out:
@@ -58,9 +56,9 @@ pub fn main() void {
 
     std.debug.print("Insect report! ", .{});
 
-    // Oops! We've made a mistake here.
-    printInsect(ant, AntOrBee.c);
-    printInsect(bee, AntOrBee.c);
+    // Ha! We have not made a mistake here.
+    printInsect(ant, AntOrBee.ant);
+    printInsect(bee, AntOrBee.bee);
 
     std.debug.print("\n", .{});
 }
@@ -70,7 +68,7 @@ pub fn main() void {
 // inscrutable but we do not question her.
 fn printInsect(insect: Insect, what_it_is: AntOrBee) void {
     switch (what_it_is) {
-        .a => std.debug.print("Ant alive is: {}. ", .{insect.still_alive}),
-        .b => std.debug.print("Bee visited {} flowers. ", .{insect.flowers_visited}),
+        .ant => std.debug.print("Ant alive is: {}. ", .{insect.still_alive}),
+        .bee => std.debug.print("Bee visited {} flowers. ", .{insect.flowers_visited}),
     }
 }
