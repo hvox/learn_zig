@@ -10,12 +10,12 @@
 //         large: u64,
 //     };
 //
-// Let's convert Insect. Doctor Zoraptera has already deleted the
-// explicit InsectStat enum for you!
+// I have converted Insect. Doctor Zoraptera has already deleted
+// the explicit InsectStat enum for me!
 //
 const std = @import("std");
 
-const Insect = union(InsectStat) {
+const Insect = union(enum) {
     flowers_visited: u16,
     still_alive: bool,
 };
