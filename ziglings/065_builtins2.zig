@@ -40,7 +40,7 @@
 // (Notice how the two functions which return types start with
 // uppercase letters? This is a standard naming practice in Zig.)
 //
-const print = import(std).debug.print; // Oops!
+const print = @import("std").debug.print;
 
 const Narcissus = struct {
     me: *Narcissus = undefined,
@@ -55,20 +55,19 @@ const Narcissus = struct {
 pub fn main() void {
     var narcissus: Narcissus = Narcissus{};
 
-    // Oops! We cannot leave the 'me' and 'myself' fields
-    // undefined. Please set them here:
-    ??? = &narcissus;
-    ??? = &narcissus;
+    // We cannot leave the 'me' and 'myself' fields
+    // undefined. So I set them here:
+    narcissus.me = &narcissus;
+    narcissus.myself = &narcissus;
 
     // This determines a "peer type" from three separate
     // references (they just happen to all be the same object).
     const T1 = @TypeOf(narcissus, narcissus.me.*, narcissus.myself.*);
 
-    // Oh dear, we seem to have done something wrong when calling
-    // this function. It is namespaced to the struct, but doesn't
-    // use the method syntax (there's no self parameter). Please
-    // fix this call:
-    const T2 = narcissus.fetchTheMostBeautifulType();
+    // This function is namespaced to the struct, but doesn't
+    // use the method syntax (there's no self parameter).
+    // So I call it using Narcissus type and not narcissus variable:
+    const T2 = Narcissus.fetchTheMostBeautifulType();
 
     print("A {} loves all {}es. ", .{ T1, T2 });
 
@@ -103,15 +102,15 @@ pub fn main() void {
     // Please complete these 'if' statements so that the field
     // name will not be printed if the field is of type 'void'
     // (which is a zero-bit type that takes up no space at all!):
-    if (fields[0].??? != void) {
+    if (fields[0].field_type != void) {
         print(" {s}", .{@typeInfo(Narcissus).Struct.fields[0].name});
     }
 
-    if (fields[1].??? != void) {
+    if (fields[1].field_type != void) {
         print(" {s}", .{@typeInfo(Narcissus).Struct.fields[1].name});
     }
 
-    if (fields[2].??? != void) {
+    if (fields[2].field_type != void) {
         print(" {s}", .{@typeInfo(Narcissus).Struct.fields[2].name});
     }
 
