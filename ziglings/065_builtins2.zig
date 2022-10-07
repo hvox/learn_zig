@@ -69,7 +69,10 @@ pub fn main() void {
     // So I call it using Narcissus type and not narcissus variable:
     const T2 = Narcissus.fetchTheMostBeautifulType();
 
-    print("A {} loves all {}es. ", .{ T1, T2 });
+    print("A {s} loves all {s}es. ", .{
+        maximumNarcissism(T1),
+        maximumNarcissism(T2),
+    });
 
     //   His final words as he was looking in
     //   those waters he habitually watched
@@ -123,4 +126,20 @@ pub fn main() void {
     // isn't it? :-)
 
     print(".\n", .{});
+}
+
+// NOTE: This exercise did not originally include the function below.
+// But a change after Zig 0.10.0 added the source file name to the
+// type. "Narcissus" became "065_builtins2.Narcissus".
+//
+// To fix this, I've added this function to strip the filename from
+// the front of the type name in the dumbest way possible. (It returns
+// a slice of the type name starting at character 14 (assuming
+// single-byte characters).
+//
+// We'll be seeing @typeName again in Exercise 070. For now, you can
+// see that it takes a Type and returns a u8 "string".
+fn maximumNarcissism(myType: anytype) []const u8 {
+    // Turn '065_builtins2.Narcissus' into 'Narcissus'
+    return @typeName(myType)[14..];
 }
