@@ -12,7 +12,7 @@
 //     var bar: u8 = 20;
 //
 // Example: foo cannot be negative and can hold 0 to 255
-//          bar CAN be negative and can hold −128 to 127
+//          bar CAN be negative and can hold -128 to 127
 //
 //     const foo: u8 = 20;
 //     const bar: i8 = -20;
