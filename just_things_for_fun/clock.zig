@@ -78,10 +78,10 @@ pub fn main() !void {
     }
     print("\n" ** 5 ++ "\x1b[?25l", .{});
     while (true) {
-        const current_time = @divFloor(std.time.milliTimestamp(), 1000);
-        const seconds = @intCast(u7, @rem(current_time, 60));
-        const minutes = @intCast(u7, @rem(@divFloor(current_time, 60), 60));
-        const hours = @intCast(u5, @rem(@divFloor(current_time, 60 * 60) + 3, 24));
+        const current_time = @intCast(u64, std.time.milliTimestamp());
+        const seconds = current_time / 1000 % 60;
+        const minutes = current_time / 60_000 % 60;
+        const hours = current_time / (60 * 60_000) % 24 + 3;
         var buf: [16]u8 = undefined;
         var msg = try std.fmt.bufPrint(&buf, "{:0>2}:{:0>2}:{:0>2}", .{ hours, minutes, seconds });
         try show(msg);
