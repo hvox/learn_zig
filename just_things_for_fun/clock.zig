@@ -85,6 +85,7 @@ pub fn main() !void {
         var buf: [16]u8 = undefined;
         var msg = try std.fmt.bufPrint(&buf, "{:0>2}:{:0>2}:{:0>2}", .{ hours, minutes, seconds });
         try show(msg);
-        std.time.sleep(1000_000_000);
+        const nanoseconds = @intCast(u128, std.time.nanoTimestamp()) % 1000_000_000;
+        std.time.sleep(@intCast(u64, 1000_000_000 - nanoseconds));
     }
 }
