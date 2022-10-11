@@ -3,6 +3,7 @@
 const std = @import("std");
 const SIG = std.os.SIG;
 const print = std.debug.print;
+const bufPrint = std.fmt.bufPrint;
 
 const font3x5 =
     //        ---     █▀█     ▀█      ▀▀█     ▀▀█     █ █
@@ -82,9 +83,8 @@ pub fn main() !void {
         const seconds = current_time % 60;
         const minutes = current_time / 60 % 60;
         const hours = current_time / (60 * 60) % 24 + 3;
-        var buf: [16]u8 = undefined;
-        var msg = try std.fmt.bufPrint(&buf, "{:0>2}:{:0>2}:{:0>2}", .{ hours, minutes, seconds });
-        try show(msg);
+        var buf: [8]u8 = undefined;
+        try show(try bufPrint(&buf, "{:0>2}:{:0>2}:{:0>2}", .{ hours, minutes, seconds }));
         const nanoseconds = @intCast(u128, std.time.nanoTimestamp()) % 1000_000_000;
         std.time.sleep(@intCast(u64, 1000_000_000 - nanoseconds));
     }
