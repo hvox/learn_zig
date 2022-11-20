@@ -41,9 +41,10 @@ const Schooner = struct {
         // and we just want it to "do what I mean" and keep
         // working.
         //
-        // Please change this so that it sets a 0 scale to 1
+        // I have changed this so that it sets a 0 scale to 1
         // instead.
-        if (my_scale == 0) @compileError("Scale 1:0 is not valid!");
+        if (my_scale == 0)
+            my_scale = 1; // @compileError("Scale 1:0 is not valid!");
 
         self.scale = my_scale;
         self.hull_length /= my_scale;
@@ -67,9 +68,9 @@ pub fn main() void {
     var minnow = Schooner{ .name = "Minnow" };
 
     // Hey, we can't just pass this runtime variable as an
-    // argument to the scaleMe() method. What would let us do
-    // that?
-    var scale: u32 = undefined;
+    // argument to the scaleMe() method.
+    // 'comptime' lets us do that.
+    comptime var scale: u32 = undefined;
 
     scale = 32; // 1:32 scale
 
