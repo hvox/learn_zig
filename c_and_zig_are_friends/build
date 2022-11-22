@@ -1,7 +1,8 @@
 #!/bin/sh
 
 zig \
-	build-exe      `# compile to executable `\
-	-isystem .     `# include current directory to libs path `\
-	-lc            `# link to libc `\
-	main.zig       `# source `
+	build-exe         `# compile to executable `\
+	-freference-trace `# in case of exception print trace` \
+	-isystem .        `# include current directory to libs path `\
+	-lc               `# link to libc `\
+	main.zig          `# source `
