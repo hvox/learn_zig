@@ -35,12 +35,12 @@ pub fn main() void {
     // manually access each of the three fields. Our 'if'
     // statement was repeated three times almost verbatim. Yuck!
     //
-    // Please use an 'inline for' to implement the block below
+    // I have used an 'inline for' to implement the block below
     // for each field in the slice 'fields'!
 
     const fields = @typeInfo(Narcissus).Struct.fields;
 
-    ??? {
+    inline for (fields) |field| {
         if (field.field_type != void) {
             print(" {s}", .{field.name});
         }
